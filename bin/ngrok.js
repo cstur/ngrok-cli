@@ -23,16 +23,24 @@ function execNatapp(token){
 	});	
 }
 
+function help(){
+    program.help();
+    console.log();
+}
+
 if (program.authtoken) {
 	console.log('execute with token '+program.authtoken)
 	execNatapp(program.authtoken);
 }else{
-	var authtoken = fs.readFileSync('./cache.txt','UTF-8');
-	if (authtoken && authtoken!='') {
-		console.log('execute with cache token '+authtoken)
-		execNatapp(authtoken);
-	} else {
-	    program.help();
-	    console.log();
+	try{
+		var authtoken = fs.readFileSync('./cache.txt','UTF-8');
+		if (authtoken && authtoken!='') {
+			console.log('execute with cache token '+authtoken)
+			execNatapp(authtoken);
+		} else {
+		    help();
+		}
+	}catch(err){
+		help();
 	}
 }
