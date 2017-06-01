@@ -3,10 +3,11 @@
 var program = require('commander');
 var path = require('path');
 var natapp = path.join(__dirname, 'natapp');
+var cahefilePath = path.join(__dirname, 'cache.txt');
 var fs = require('fs');
 
 program
-  .version('0.0.1')
+  .version('1.0.2')
   .option('-a, --authtoken [authtoken]', 'authtoken')
   .parse(process.argv);
 
@@ -18,7 +19,7 @@ function execNatapp(token){
 	    console.log('child process exited with code ' + code);
 	});
 
-	fs.writeFile('./cache.txt', token, function (err) {
+	fs.writeFile(cahefilePath, token, function (err) {
 	  if (err) throw err;
 	});	
 }
@@ -33,7 +34,7 @@ if (program.authtoken) {
 	execNatapp(program.authtoken);
 }else{
 	try{
-		var authtoken = fs.readFileSync('./cache.txt','UTF-8');
+		var authtoken = fs.readFileSync(cahefilePath,'UTF-8');
 		if (authtoken && authtoken!='') {
 			console.log('execute with cache token '+authtoken)
 			execNatapp(authtoken);
