@@ -1,0 +1,16 @@
+{
+  "name": "ngrok-cli",
+  "version": "1.0.0",
+  "description": "",
+  "author": "shidongjie",
+  "license": "ISC",
+  "bin": {
+    "ngrok-cli": "bin/ngrok.js"
+  },
+  "dependencies": {
+    "commander": "^2.9.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.4.2"
+  }
+}
