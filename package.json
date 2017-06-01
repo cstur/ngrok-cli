@@ -4,6 +4,10 @@
   "description": "",
   "author": "shidongjie",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cstur/ngrok-cli.git"
+  },
   "bin": {
     "ngrok-cli": "bin/ngrok.js"
   },
